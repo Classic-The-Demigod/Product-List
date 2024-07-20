@@ -30,8 +30,8 @@ const Product = ({ product }) => {
         <img
           className={
             count > 0
-              ? "border-red border-2 w-[200px] rounded-[5px]"
-              : "w-[200px] rounded-[5px]"
+              ? "border-red border-2 md:w-[200px] rounded-[5px]"
+              : "md:w-[200px] rounded-[5px]"
           }
           src={product.image}
           alt={product.name}
