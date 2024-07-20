@@ -1,14 +1,17 @@
 // import Image from "./assets/image-waffle-desktop.jpg";
 import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
-import { CartProvider, useCart } from "./CartContext";
+import { CartProvider } from "./CartContext";
 import OrderModal from "./components/OrderModal";
-import {useState} from "react"
+import { useState } from "react"
+// import { useCart } from "./CartContext";
 
 
 function App() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // const { resetCart } = useCart()
+  
   // const { cartItems, updateCart } = useCart();
 
   const handleConfirmOrder = () => {
@@ -20,8 +23,10 @@ function App() {
     // cartItems.forEach((item) => {
     //   updateCart(item, -item.quantity);
     // });
+   
 
     
+    // resetCart()
     setIsModalOpen(false);
   };
   

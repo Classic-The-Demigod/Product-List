@@ -12,6 +12,9 @@ const Product = ({ product }) => {
     setCount(cartItem ? cartItem.quantity : 0);
   }, [cartItems, product.id]);
 
+
+
+
   const increment = () => {
     setCount((prevCount) => prevCount + 1);
     updateCart(product, 1);
