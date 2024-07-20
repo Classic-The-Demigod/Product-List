@@ -5,7 +5,7 @@ import RemoveIcon from "/assets/icon-remove-item.svg";
 import Carbon from "/assets/icon-carbon-neutral.svg";
 
 
-function Cart() {
+function Cart({ onConfirmOrder }) {
   const { cartItems, updateCart } = useCart();
 
   const totalItems = cartItems.length;
@@ -19,7 +19,6 @@ function Cart() {
   };
 
   return (
-    
     <div className="bg-white px-6 py-6 rounded-lg">
       <h1 className="text-2xl text-red font-bold">Your Cart ({totalItems})</h1>
       {totalItems === 0 ? (
@@ -34,14 +33,14 @@ function Cart() {
           {cartItems.map((item) => (
             <div
               key={item.id}
-              className="flex justify-between items-center pt-2 pb-2 border-b-2 border-rose-100"
+              className="flex justify-between items-center pt-2 pb-2 border-b border-rose-100"
             >
               <div>
-                <p className="text-sm font-bold pb-1">{item.name}</p>
+                <p className="text-sm font-bold pb-1 text-rose-500">{item.name}</p>
                 <div className="flex items-center gap-2 font-primary text-sm">
-                  <p>@{item.quantity}</p>
-                  <p>{item.price}</p>
-                  <p>
+                  <p className="text-sm text-red">{item.quantity}x</p>
+                  <p className="text-sm text-rose-400">@ {item.price}</p>
+                  <p className="font-medium text-rose-500">
                     $
                     {(
                       parseFloat(item.price.replace("$", "")) * item.quantity
@@ -72,9 +71,14 @@ function Cart() {
               <span className="font-bold text-rose-500">carbon-neutral</span>{" "}
               delivery
             </p>
-            </div>
-            
-            <button className="text-sm self-stretch mt-4 bg-red px-4 py-2 text-white rounded-3xl">Confirm Order</button>
+          </div>
+
+          <button
+            onClick={onConfirmOrder}
+            className="text-sm self-stretch mt-4 bg-red px-4 py-2 text-white rounded-3xl"
+          >
+            Confirm Order
+          </button>
         </div>
       )}
     </div>
